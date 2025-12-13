@@ -124,8 +124,9 @@ function AnimatedNumber({ value }: { value: number }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const duration = 1000; // 1 second
-    const steps = 60;
+    // Fast spring animation - starts at 0, quickly reaches target
+    const duration = 400; // Reduced from 1000ms
+    const steps = 20; // Reduced from 60 for better performance
     const increment = value / steps;
     let current = 0;
 

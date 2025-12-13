@@ -168,7 +168,25 @@
       "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAsVBMVEUAAAD/////5gBwcHD5+fk6Ojr/7wBiYmL/7QD/6gDv7/Cjo6M6NQD/6QBzc3OysrPS0tK4uLjZxACGeQDGswBrYADr1ACyoQCdjgBLRAAgHQD44ACJfADgygCjkwAZGRlISEhXV1fHx8csLCzg4OBAOQCQggCrmgBlWwAzLwAuKgBfVQDDsAD/+AApJQCBdABWTgAdGgDx2QDOugAiIiKEhISRkZGoqKgyMjOYmJhSUlJ3n8j2AAADy0lEQVR4nO3baVviMBSGYUAorogL6qCyuM2M2zjj7v//YWMb0LYnbdNCW0qe+2OJNXmvc0gXrdUAAAAAAAAAAAAAAAAAwKe3e1n2FBbL5WHDcTbLnsUiuTpw1hoNMvnSe3RWtxoNMpna/HnslkiDTKauTr8CIRNXb39V9QyZKP6eIRNXsGfIpPYr3DO2Z/Jb0zN2Z3Ki7RmLM4nsGVsziesZOzOJ7xkLM0nsGdsyuTboGbsy2TPqGYsyubk17BlbMrkemPeMHZmk6xkLMrm5XUvXM56ttdW7JX1GfZ++Zz7TcJzG7uHej7Inn4u0PePFcbB/1OuXPfOcpOqZJS8OT4qeWfriUP7sGgViQ3EoRj1jSXF47gf/EkrEnuJQPnsmrkRsKg7lIaZnbCsOTz+yZ+wrDkXfM1YWh/LZM044EFuLw9M/CvWMxcWhBHvG6uJQHm63pj1jfXF4/k57huKY8HqG4vjm9oxDcXzrD47v7igOn5PT48cBxeHzcHJT9hQAAAAAAABQLcPOSqzOkzuqJUZ1Ribn0o1afK16gq43TPOBPNeOHHRe8HLmIjGT+tgd9iyPv4RPNZRjNopf0BwkZ7LujVtPLhRZJs3ClzMXyZnUn91xH/L4e/BM53JEp4wVzc4gE1UQZ0mFIgdclLCeeTDJZNsdmPRtoTlRq5wlzcwkE7V7bMjj/hN1xac75axodkaZqP24KY6/fp9nFJ9YpRhlUm+7Qztxy5Zl8h71KxeeWSZqP74Qx7/aYxzxI5Vklom6QNP0x3ByGhlXu8RFzcgwk6j9eFIobfFBt8Q1zUpmsq7TVF+nMit1QyPL5K3MRc1IZhI3+l2MPnMPr4jD28XMPh/pMtHsx+6FmbwZKmbyOUmZiayIru6mWdwzV0rKTDTfHCNZPBXeh11pM5Hju/JablzM3POSNhPdUxKRUiEzz0/qTHSPIUOeiph4jtJnIvfjkNekMyy69JnoHkOmO8Gi03xnagTuceWFfMBzWUuZG7P7neDjIflcwKeqDxx9smTyFjf0o6SFzFGWTGrb0SPPylnGXGXKJGY/Hmp/S7Vky+QlamA1X/yFZMskaj+u6Iu/kIyZjPXjKvriLyRjJvr9eAn2YVfWTDRvh93HBkshaya1V6NRlZQ5E81+XPjkcyIzaXck3cWpeH9c6efSfhnuiyfIRCITiUwkMpHIRCITiUwkmzL5aEfz/yWjTZnE8b+6IRPF/xiNTMiETMgkiEwkMpHIRCITiUwkMpHIRGrVm+YC/5OzEfrJ5ckEAAAAAAAAAAAAAAAAsNx/Yr1IA6piPWIAAAAASUVORK5CYII=",
       "source": "manual",
       "initials": "E&"
+    },
+    "focus group": {
+      "url": "https://designstoreage.blob.core.windows.net/images/FocusGroup/logo.svg",
+      "source": "advanced-scrape",
+      "initials": "FG",
+      "timestamp": 1765665172669
+    },
+    "giit africa": {
+      "url": "https://giitafrica.com/wp-content/uploads/2024/09/logo.png",
+      "source": "advanced-scrape",
+      "initials": "GA",
+      "timestamp": 1765665216410
+    },
+    "heckerbella limited": {
+      "url": "https://heckerbella.com/wp-content/uploads/elementor/thumbs/633ee93d0800331afe493487_Rectangle-32new-13-qo3jbeci2tppd59jx5c1ko71iduo8ogqoydwa33jxs.png",
+      "source": "advanced-scrape",
+      "initials": "HL",
+      "timestamp": 1765665235734
     }
   },
-  "lastUpdated": "2025-12-13T21:15:40.720Z"
+  "lastUpdated": "2025-12-13T22:33:55.734Z"
 }

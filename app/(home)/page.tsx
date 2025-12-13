@@ -109,11 +109,11 @@ export default function Index() {
     if (isLoadingMore || !hasMore) return;
 
     setIsLoadingMore(true);
-    // Simulate network delay for smooth UX
-    setTimeout(() => {
+    // Use requestAnimationFrame for smooth rendering
+    requestAnimationFrame(() => {
       setDisplayCount((prev) => prev + LOAD_MORE_COUNT);
       setIsLoadingMore(false);
-    }, 100);
+    });
   };
 
   // Infinite scroll hook
@@ -158,10 +158,34 @@ export default function Index() {
   // Loading state
   if (loading) {
     return (
-      <main className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>
-          <p className="text-lg font-medium">Loading internship data...</p>
+      <main className="min-h-screen bg-background">
+        {/* Hero Skeleton */}
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 animate-pulse">
+            <div className="h-16 bg-muted rounded-lg max-w-2xl mx-auto mb-4"></div>
+            <div className="h-6 bg-muted rounded-lg max-w-xl mx-auto"></div>
+          </div>
+          {/* Stats Skeleton */}
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[...Array(4)].map((_, i) => (
+              <div
+                key={i}
+                className="h-32 bg-muted rounded-lg animate-pulse"
+              ></div>
+            ))}
+          </div>
+        </div>
+        {/* Companies Skeleton */}
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="h-8 bg-muted rounded-lg max-w-xs mb-6 animate-pulse"></div>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="h-64 bg-muted rounded-lg animate-pulse"
+              ></div>
+            ))}
+          </div>
         </div>
       </main>
     );

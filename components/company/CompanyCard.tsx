@@ -5,15 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import type { Company } from "@/lib/types/internship";
 import { CompanyLogo } from "./CompanyLogo";
 import { Users, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface CompanyCardProps {
   company: Company;
   onClick: () => void;
-  delay?: number;
 }
 
-export function CompanyCard({ company, onClick, delay = 0 }: CompanyCardProps) {
+export function CompanyCard({ company, onClick }: CompanyCardProps) {
   const getBadgeColor = () => {
     switch (company.badge) {
       case "popular":
@@ -26,13 +24,7 @@ export function CompanyCard({ company, onClick, delay = 0 }: CompanyCardProps) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.3 }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
+    <div className="transition-transform hover:scale-[1.02] active:scale-[0.98]">
       <Card
         className="p-6 border-2 hover:border-primary cursor-pointer transition-all hover:shadow-lg group h-full"
         onClick={onClick}
@@ -78,7 +70,7 @@ export function CompanyCard({ company, onClick, delay = 0 }: CompanyCardProps) {
           </span>
         </div>
       </Card>
-    </motion.div>
+    </div>
   );
 }
 
@@ -95,12 +87,11 @@ export function CompanyGrid({
 }: CompanyGridProps) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-      {companies.map((company, index) => (
+      {companies.map((company) => (
         <CompanyCard
           key={company.id}
           company={company}
           onClick={() => onCompanyClick(company.id)}
-          delay={disableAnimation ? 0 : index * 0.02} // Faster animation for better perf
         />
       ))}
     </div>
