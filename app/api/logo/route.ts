@@ -62,6 +62,66 @@ export async function GET(request: NextRequest) {
 }
 
 /**
+ * POST endpoint for admin logo management
+ * Accepts full URLs or domains
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const { companyName } = await request.json();
+
+    console.log(`🔍 [LOGO-POST] Fetching logo for: ${companyName}`);
+
+    if (!companyName) {
+      return NextResponse.json(
+        { error: "Company name/URL required" },
+        { status: 400 }
+      );
+    }
+
+    let targetDomain = companyName;
+
+    // Extract domain from full URL if provided
+    if (companyName.startsWith("http://") || companyName.startsWith("https://")) {
+      try {
+        const url = new URL(companyName);
+        targetDomain = url.hostname;
+        console.log(`🔗 [LOGO-POST] Extracted domain: ${targetDomain}`);
+      } catch {
+        console.error(`❌ [LOGO-POST] Invalid URL: ${companyName}`);
+        return NextResponse.json(
+          { error: "Invalid URL format", logoUrl: null },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Ensure we have http/https prefix
+    if (!targetDomain.startsWith("http://") && !targetDomain.startsWith("https://")) {
+      targetDomain = "https://" + targetDomain;
+    }
+
+    // Fetch logo from the domain
+    const logoUrl = await scrapeLogoFromWebsite(targetDomain);
+
+    console.log(`${logoUrl ? "✅" : "❌"} [LOGO-POST] Logo ${logoUrl ? "found" : "not found"}: ${logoUrl || "N/A"}`);
+
+    const result: LogoSearchResult = {
+      logoUrl,
+      domain: targetDomain,
+      source: logoUrl ? "website-scrape" : "not-found",
+    };
+
+    return NextResponse.json(result);
+  } catch (error) {
+    console.error("💥 [LOGO-POST] Error:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch logo", logoUrl: null },
+      { status: 500 }
+    );
+  }
+}
+
+/**
  * Discover company domain from name
  * Uses DuckDuckGo Instant Answer API (free, no rate limits)
  */
@@ -162,10 +222,10 @@ async function scrapeLogoFromWebsite(domain: string): Promise<string | null> {
 
     // Priority 2: Look for images with "logo" in src or alt
     const logoImages = $("img")
-      .filter((_index: number, el: any) => {
-        const src = $(el).attr("src") || "";
-        const alt = $(el).attr("alt") || "";
-        const className = $(el).attr("class") || "";
+      .filter(function () {
+        const src = $(this).attr("src") || "";
+        const alt = $(this).attr("alt") || "";
+        const className = $(this).attr("class") || "";
 
         return (
           src.toLowerCase().includes("logo") ||

@@ -10,7 +10,7 @@ import type {
   IndustryMetric,
   LocationMetric,
 } from "../types/internship";
-import { detectIndustry, extractCity, slugify } from "./csvParser";
+import { detectIndustry, extractCity } from "./csvParser";
 
 /**
  * Aggregate students into companies

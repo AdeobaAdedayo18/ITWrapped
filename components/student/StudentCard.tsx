@@ -26,7 +26,7 @@ interface StudentCardProps {
   delay?: number;
 }
 
-export function StudentCard({ student, onClick, delay = 0 }: StudentCardProps) {
+export function StudentCard({ student, delay = 0 }: StudentCardProps) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const copyToClipboard = async (text: string, field: string) => {

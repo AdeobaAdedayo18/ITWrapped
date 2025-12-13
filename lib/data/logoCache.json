@@ -1,17 +1,46 @@
 {
   "cache": {
-    "united bank for africa (uba)": {
-      "url": "https://ubagroup.com/favicon.ico",
+    "kucheza gaming": {
+      "url": "https://kuchezagaming.com/assets/images/kPattern.png",
+      "source": "advanced-scrape",
+      "initials": "KG",
+      "timestamp": 1765655472444
+    },
+    "union bank of nigeria": {
+      "url": "https://static.hugedomains.com/images/hdv3-img/og_hugedomains.png",
       "source": "advanced-scrape",
       "initials": "UB",
-      "timestamp": 1765653286517
+      "timestamp": 1765655485309
     },
-    "total energies": {
-      "url": "https://totalenergies.com/sites/g/files/nytnzq121/files/images/2021-05/cover-carrousel-logo-2x.png",
+    "tizeti": {
+      "url": "https://www.tizeti.com/wp-content/uploads/2017/01/Tizeti-Logo-.png",
       "source": "advanced-scrape",
-      "initials": "TE",
-      "timestamp": 1765653289042
+      "initials": "TI",
+      "timestamp": 1765655489101
+    },
+    "cyberspace limited": {
+      "url": "https://prod-static-web.cdn.bcebos.com/guanwang2.0/logo.png",
+      "source": "advanced-scrape",
+      "initials": "CL",
+      "timestamp": 1765656375369
+    },
+    "hiit plc": {
+      "url": "https://www.hiitplc.com/wp-content/uploads/2016/09/cropped-hiit-logo-1.png",
+      "source": "advanced-scrape",
+      "initials": "HP",
+      "timestamp": 1765656379650
+    },
+    "cowrywise financial technology limited": {
+      "url": "https://cdn.cowrywise.com/images/brand/platform-icons/ios-180.png",
+      "source": "advanced-scrape",
+      "initials": "CF",
+      "timestamp": 1765656387584
+    },
+    "quidax": {
+      "url": "data:image/jpeg;base64,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",
+      "source": "manual",
+      "initials": "Q"
     }
   },
-  "lastUpdated": "2025-12-13T19:14:49.042Z"
+  "lastUpdated": "2025-12-13T20:06:27.584Z"
 }

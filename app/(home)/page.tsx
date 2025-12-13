@@ -41,13 +41,11 @@ const INDUSTRY_FILTERS = [
 
 export default function Index() {
   const {
-    students,
     companies,
     stats,
     loading,
     error,
     getStudentsByCompany,
-    search,
   } = useInternshipData();
 
   const [selectedCompanyId, setSelectedCompanyId] = useState<string | null>(

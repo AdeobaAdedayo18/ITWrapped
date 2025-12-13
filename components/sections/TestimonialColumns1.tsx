@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Heart, MessageCircle, Share2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ExpandedStory } from "@/components/story/ExpandedStory";
 
 export type Testimonial = {
   text: string;

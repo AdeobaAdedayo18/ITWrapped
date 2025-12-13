@@ -15,7 +15,6 @@ export function generateLinkedInSearchUrl(student: Student): string {
   const nameParts = fullName.split(/\s+/);
   // Use only first two names for more accurate search
   const name = nameParts.slice(0, 2).join(" ");
-  const company = student.companyName.trim();
 
   // Build search query
   const query = `${name} Covenant University`;

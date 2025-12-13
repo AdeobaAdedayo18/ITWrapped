@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useState, useMemo } from "react";
-import type { Student, Company, DashboardStats } from "../types/internship";
+import type { Student, Company } from "../types/internship";
 import { parseCSVText } from "../data/csvParser";
 import {
   aggregateCompanies,

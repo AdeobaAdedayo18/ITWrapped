@@ -91,7 +91,7 @@ async function readCache(): Promise<LogoCache> {
     const fileContent = await fs.readFile(CACHE_FILE_PATH, "utf-8");
     const data = JSON.parse(fileContent);
     return data.cache || {};
-  } catch (error) {
+  } catch {
     // If file doesn't exist or is invalid, return empty cache
     return {};
   }

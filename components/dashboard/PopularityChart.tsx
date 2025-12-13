@@ -3,7 +3,7 @@
 import { Card } from "@/components/ui/card";
 import type { Company } from "@/lib/types/internship";
 import { Badge } from "@/components/ui/badge";
-import { Building2, Users, MapPin, ArrowRight } from "lucide-react";
+import { Users, MapPin, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface PopularityChartProps {

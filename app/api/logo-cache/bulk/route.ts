@@ -20,7 +20,7 @@ export async function GET() {
         },
       }
     );
-  } catch (error) {
+  } catch {
     // Return empty cache if file doesn't exist
     return NextResponse.json(
       { cache: {}, lastUpdated: null },

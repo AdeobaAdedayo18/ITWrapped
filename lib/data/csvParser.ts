@@ -170,7 +170,7 @@ export async function parseCSV(file: File): Promise<Student[]> {
       skipEmptyLines: true,
       complete: (results) => {
         try {
-          const students = processCSVData(results.data as any[]);
+          const students = processCSVData(results.data as Record<string, string>[]);
           resolve(students);
         } catch (error) {
           reject(error);
@@ -192,17 +192,17 @@ export function parseCSVText(csvText: string): Student[] {
     skipEmptyLines: true,
   });
 
-  return processCSVData(results.data as any[]);
+  return processCSVData(results.data as Record<string, string>[]);
 }
 
 /**
  * Process raw CSV data into Student objects
  */
-function processCSVData(rows: any[]): Student[] {
+function processCSVData(data: Record<string, string>[]): Student[] {
   const students: Student[] = [];
   const seenMatricNos = new Set<string>();
 
-  for (const row of rows) {
+  for (const row of data) {
     // Get values with various possible column names
     const name = row.NAME || row.name || "";
     const matricNo = row["MATRIC NO"] || row.matricNo || row["MATRIC NO"] || "";

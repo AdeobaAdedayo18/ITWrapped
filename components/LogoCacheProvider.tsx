@@ -33,16 +33,15 @@ export function LogoCacheProvider({ children }: { children: React.ReactNode }) {
           const newCache = new Map<string, LogoCacheEntry>();
 
           // Index by normalized company name for fast lookups
-          Object.entries(data.cache || {}).forEach(
-            ([name, entry]: [string, any]) => {
-              const normalized = name.toLowerCase().trim();
-              newCache.set(normalized, {
-                url: entry.url,
-                source: entry.source,
-                initials: entry.initials || "",
-              });
-            }
-          );
+          Object.entries(data.cache || {}).forEach(([name, entry]) => {
+            const normalized = name.toLowerCase().trim();
+            const cacheEntry = entry as LogoCacheEntry;
+            newCache.set(normalized, {
+              url: cacheEntry.url,
+              source: cacheEntry.source,
+              initials: cacheEntry.initials || "",
+            });
+          });
 
           setCache(newCache);
         }

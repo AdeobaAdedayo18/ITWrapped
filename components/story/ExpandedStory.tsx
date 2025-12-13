@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
   ArrowLeft,
   Heart,
-  MessageCircle,
   Share2,
   Plus,
   Minus,
@@ -263,7 +262,7 @@ export function ExpandedStory({
     if (!open) return;
     document.addEventListener("keydown", escHandler);
     return () => document.removeEventListener("keydown", escHandler);
-  }, [open]);
+  }, [open, escHandler]);
 
   const comments = sampleComments();
   const [commentText, setCommentText] = useState("");

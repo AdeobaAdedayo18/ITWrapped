@@ -1,12 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { FeedbackModal } from "../FeedbackModal";
 
 export function Navbar() {
-  const [active] = useState("About");
-  const linkBase =
-    "px-3 py-2 rounded-full text-sm hover:bg-black/5 transition-colors";
-
   return (
     <header className="sticky top-0 z-40 w-full border-b border-black bg-white">
       <div className="w-full flex h-16 items-center justify-between pl-6">
@@ -29,12 +25,10 @@ export function Navbar() {
 
         <div className="flex items-center gap-8">
           <div className="flex items-center justify-end">
-            <button className="h-16 border-l border-black px-8 text-lg font-medium hover:bg-primary transition-colors hover:bg-primary">
+            <button className="h-16 border-l border-black px-8 text-lg font-medium hover:bg-primary transition-colors">
               Log in
             </button>
-            <button className="h-16 bg-black px-4 text-lg font-medium text-white hover:bg-primary hover:text-black transition-colors hover:bg-primary">
-              Share your Story
-            </button>
+            <FeedbackModal />
           </div>
         </div>
       </div>

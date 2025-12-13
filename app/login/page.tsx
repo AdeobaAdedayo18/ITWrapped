@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -77,7 +78,7 @@ export default function LoginPage() {
         </p>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
+        <Link
           className="flex items-center gap-2 hover:underline hover:underline-offset-4 font-mono text-sm"
           href="/"
         >
@@ -89,7 +90,7 @@ export default function LoginPage() {
             height={16}
           />
           Back to Home →
-        </a>
+        </Link>
       </footer>
     </div>
   );
