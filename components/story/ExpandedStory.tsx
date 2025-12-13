@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  X,
-  ArrowLeft,
-  Heart,
-  Share2,
-  Plus,
-  Minus,
-  Send,
-} from "lucide-react";
+import { X, ArrowLeft, Heart, Share2, Plus, Minus, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Testimonial } from "@/components/sections/TestimonialColumns1";
 import { cn } from "@/lib/utils";

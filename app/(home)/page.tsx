@@ -40,13 +40,8 @@ const INDUSTRY_FILTERS = [
 ];
 
 export default function Index() {
-  const {
-    companies,
-    stats,
-    loading,
-    error,
-    getStudentsByCompany,
-  } = useInternshipData();
+  const { companies, stats, loading, error, getStudentsByCompany } =
+    useInternshipData();
 
   const [selectedCompanyId, setSelectedCompanyId] = useState<string | null>(
     null
