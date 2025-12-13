@@ -186,7 +186,25 @@
       "source": "advanced-scrape",
       "initials": "HL",
       "timestamp": 1765665235734
+    },
+    "firstbank": {
+      "url": "https://firstbank.com/media/yyydcsk3/first-bank-and-trust-company-logo.svg?anchor=center&mode=pad&width=230&quality=80",
+      "source": "advanced-scrape",
+      "initials": "FI",
+      "timestamp": 1765665351399
+    },
+    "infoware limited": {
+      "url": "https://infoware.com/wp-content/uploads/InfowareSmalltrans2.png",
+      "source": "advanced-scrape",
+      "initials": "IL",
+      "timestamp": 1765665385841
+    },
+    "interswitch": {
+      "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/4e/fa/e4/4efae4b0-3346-6c4f-f370-5015aa8e62c8/pr_source.jpg/230x0w.jpg",
+      "source": "advanced-scrape",
+      "initials": "IN",
+      "timestamp": 1765665408052
     }
   },
-  "lastUpdated": "2025-12-13T22:33:55.734Z"
+  "lastUpdated": "2025-12-13T22:36:48.052Z"
 }
