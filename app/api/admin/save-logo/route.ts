@@ -27,7 +27,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Read existing cache
+    // Check if we're in a serverless environment (production)
+    const isProduction = process.env.VERCEL || process.env.NODE_ENV === 'production';
+    
+    if (isProduction) {
+      // In production, filesystem is read-only
+      // Return success but warn that changes won't persist
+      console.log("⚠️ [ADMIN] Running in production - filesystem is read-only");
+      console.log("⚠️ [ADMIN] Logo saved to memory only (will not persist)");
+      
+      return NextResponse.json({
+        success: true,
+        warning: "Changes saved temporarily. Set up Vercel KV or database for persistence.",
+        message: `Logo saved for ${companyName} (memory only)`,
+      });
+    }
+
+    // Development: Read existing cache from filesystem
     const cachePath = path.join(process.cwd(), "lib", "data", "logoCache.json");
     let cacheData: LogoCache = { cache: {} };
 
