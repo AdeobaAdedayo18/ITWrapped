@@ -8,7 +8,7 @@ export function Navbar() {
       <div className="w-full flex h-16 items-center justify-between pl-6">
         <div className="flex items-center gap-3">
           <a
-            className="font-bold tracking-tight text-4xl"
+            className="font-bold tracking-tight text-2xl md:text-4xl"
             href="#"
             aria-label="Gumroad home"
             style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
@@ -24,10 +24,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-8">
-          <div className="flex items-center justify-end">
-            <button className="h-16 border-l border-black px-8 text-lg font-medium hover:bg-primary transition-colors">
-              Log in
-            </button>
+          <div className="pl-8 flex items-center justify-end">
             <FeedbackModal />
           </div>
         </div>
