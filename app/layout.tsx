@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ITWrapped",
-  description: "Your internship wrapped",
+  description: "Your Internship Wrapped",
 };
 
 export default function RootLayout({
