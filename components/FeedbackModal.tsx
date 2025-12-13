@@ -64,7 +64,7 @@ export function FeedbackModal() {
                 </span>{" "}
                 better 💡
               </motion.h4>
-              {/* Desktop heading */}
+              {/* Desktop heading1 */}
               <motion.h4
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
