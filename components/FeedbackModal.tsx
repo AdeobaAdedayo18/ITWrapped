@@ -52,10 +52,23 @@ export function FeedbackModal() {
         <ModalContent>
           {!submitted ? (
             <>
+              {/* Mobile heading */}
               <motion.h4
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-lg md:text-2xl text-neutral-900 dark:text-neutral-100 font-bold text-center mb-8"
+                className="md:hidden text-xl text-neutral-900 dark:text-neutral-100 font-bold text-center mb-8"
+              >
+                Make{" "}
+                <span className="px-1 py-0.5 rounded-md bg-primary/20 border border-primary/30">
+                  IT Wrapped
+                </span>{" "}
+                better 💡
+              </motion.h4>
+              {/* Desktop heading */}
+              <motion.h4
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="hidden md:block text-2xl text-neutral-900 dark:text-neutral-100 font-bold text-center mb-8"
               >
                 What would make{" "}
                 <span className="px-1 py-0.5 rounded-md bg-primary/20 border border-primary/30">
