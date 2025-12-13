@@ -1,11 +1,13 @@
 # Logo & LinkedIn Integration Guide
 
 ## Overview
+
 This document explains the company logo and LinkedIn search features added to ITWrapped.
 
 ## 🎨 Company Logo System
 
 ### Features
+
 - **Smart Logo Fetching**: Automatically fetches company logos from multiple sources
 - **Fallback Chain**: Clearbit → Brandfetch → Initials
 - **Lazy Loading**: Logos load asynchronously for better performance
@@ -15,6 +17,7 @@ This document explains the company logo and LinkedIn search features added to IT
 ### Implementation
 
 #### Logo Service (`lib/services/logoService.ts`)
+
 ```typescript
 // Get a company logo with automatic fallbacks
 const result = getCompanyLogo(company, size);
@@ -28,13 +31,16 @@ const domain = extractCompanyDomain(company);
 ```
 
 #### Company Logo Component (`components/company/CompanyLogo.tsx`)
+
 - **Loading State**: Shows animated skeleton with building icon
 - **Logo Display**: Shows company logo with border and padding
 - **Initials Fallback**: Gradient background with company initials
 - **Error Recovery**: Automatically tries Brandfetch if Clearbit fails
 
 ### Domain Mapping
+
 The logo service includes 40+ known Nigerian companies with correct domain mappings:
+
 - Quidax → quidax.com
 - First Bank → firstbanknigeria.com
 - Access Bank → accessbankplc.com
@@ -44,11 +50,13 @@ The logo service includes 40+ known Nigerian companies with correct domain mappi
 ### Usage in Components
 
 **Company Cards** (48x48):
+
 ```tsx
 <CompanyLogo company={company} size={48} />
 ```
 
 **Company Profile** (80x80):
+
 ```tsx
 <CompanyLogo company={company} size={80} />
 ```
@@ -56,11 +64,13 @@ The logo service includes 40+ known Nigerian companies with correct domain mappi
 ### Logo Sources
 
 1. **Clearbit Logo API** (Primary)
+
    - URL: `https://logo.clearbit.com/{domain}?size={size}`
    - Free and reliable
    - High-quality logos for most companies
 
 2. **Brandfetch** (Secondary)
+
    - URL: `https://img.brandfetch.io/{domain}/w/400/h/400`
    - Good fallback when Clearbit fails
    - Wider coverage
@@ -73,6 +83,7 @@ The logo service includes 40+ known Nigerian companies with correct domain mappi
 ## 🔗 LinkedIn Search Integration
 
 ### Features
+
 - **Smart Search URLs**: Generates LinkedIn people search with student name + company
 - **Fully Legal**: Uses LinkedIn's public search (no scraping or data storage)
 - **Security**: Opens in new tab with `noopener,noreferrer`
@@ -81,6 +92,7 @@ The logo service includes 40+ known Nigerian companies with correct domain mappi
 ### Implementation
 
 #### LinkedIn Service (`lib/services/linkedinService.ts`)
+
 ```typescript
 // Generate search URL for a student
 const url = generateLinkedInSearchUrl(student);
@@ -97,11 +109,12 @@ const advancedUrl = generateAdvancedLinkedInSearch({
   name: "John Doe",
   company: "Quidax",
   school: "University of Ibadan",
-  location: "Lagos"
+  location: "Lagos",
 });
 ```
 
 ### Usage in Student Cards
+
 ```tsx
 <Button
   variant="outline"
@@ -118,11 +131,13 @@ const advancedUrl = generateAdvancedLinkedInSearch({
 ```
 
 ### LinkedIn Search Format
+
 ```
 https://www.linkedin.com/search/results/people/?keywords=NAME+COMPANY
 ```
 
 Example:
+
 ```
 https://www.linkedin.com/search/results/people/?keywords=John+Doe+Quidax
 ```
@@ -132,6 +147,7 @@ This searches LinkedIn for people matching the student's name at their company.
 ## 🚀 Performance Optimizations
 
 ### Logo Performance
+
 1. **Lazy Loading**: Logos load asynchronously after component mount
 2. **Preloading**: Validates logo URLs before displaying
 3. **Caching**: Browser caches logos automatically via HTTP headers
@@ -139,6 +155,7 @@ This searches LinkedIn for people matching the student's name at their company.
 5. **Error Recovery**: Automatic fallback to next source on failure
 
 ### LinkedIn Performance
+
 1. **No API Calls**: Pure URL generation (instant)
 2. **No Data Storage**: Doesn't store or cache user data
 3. **Client-Side**: All processing happens in browser
@@ -147,12 +164,15 @@ This searches LinkedIn for people matching the student's name at their company.
 ## 🎯 Component Integration
 
 ### Files Modified
+
 1. ✅ `components/company/CompanyCard.tsx`
+
    - Replaced Building2 icon with CompanyLogo
    - Size: 48px
    - Hover scale effect
 
 2. ✅ `components/company/CompanyProfile.tsx`
+
    - Replaced Building2 icon with CompanyLogo
    - Size: 80px
    - Header display
@@ -163,13 +183,16 @@ This searches LinkedIn for people matching the student's name at their company.
    - Opens in new tab
 
 ### Files Created
+
 1. ✅ `lib/services/logoService.ts` (265 lines)
+
    - Company domain extraction
    - Logo URL generation (Clearbit + Brandfetch)
    - Initials fallback generator
    - Logo preloading and validation
 
 2. ✅ `lib/services/linkedinService.ts` (65 lines)
+
    - Basic search URL generation
    - Advanced search with filters
    - Name-only search
@@ -184,6 +207,7 @@ This searches LinkedIn for people matching the student's name at their company.
 ## 🧪 Testing Checklist
 
 ### Logo Testing
+
 - [x] Logos load for known companies (Quidax, First Bank, MTN)
 - [x] Clearbit → Brandfetch fallback works
 - [x] Initials show for unknown companies
@@ -193,6 +217,7 @@ This searches LinkedIn for people matching the student's name at their company.
 - [x] Lazy loading doesn't block UI
 
 ### LinkedIn Testing
+
 - [x] Button appears in all student cards
 - [x] Click generates correct search URL
 - [x] Opens in new tab with security flags
@@ -201,6 +226,7 @@ This searches LinkedIn for people matching the student's name at their company.
 - [x] No console errors
 
 ### Integration Testing
+
 - [x] No TypeScript errors
 - [x] No runtime errors
 - [x] Server builds without issues
@@ -210,6 +236,7 @@ This searches LinkedIn for people matching the student's name at their company.
 ## 🔒 Privacy & Legal
 
 ### Logo Service
+
 - ✅ Uses public APIs (Clearbit, Brandfetch)
 - ✅ No authentication required
 - ✅ Free tier usage
@@ -217,6 +244,7 @@ This searches LinkedIn for people matching the student's name at their company.
 - ✅ No data storage
 
 ### LinkedIn Service
+
 - ✅ Uses LinkedIn's public search (no API)
 - ✅ No scraping or data extraction
 - ✅ No user data stored
@@ -226,6 +254,7 @@ This searches LinkedIn for people matching the student's name at their company.
 ## 📱 User Experience
 
 ### Logo Display
+
 1. Component loads → Shows skeleton with building icon
 2. Logo URL generated → Attempts to preload
 3. Success → Displays company logo with border
@@ -233,6 +262,7 @@ This searches LinkedIn for people matching the student's name at their company.
 5. All failed → Shows gradient initials
 
 ### LinkedIn Search
+
 1. User clicks "Find on LinkedIn"
 2. Search URL generated instantly
 3. Opens LinkedIn in new tab
@@ -242,6 +272,7 @@ This searches LinkedIn for people matching the student's name at their company.
 ## 🎨 Design Consistency
 
 ### Logo Component
+
 - Border: 2px muted border
 - Padding: 8px (p-2 in Tailwind)
 - Background: White for logos, gradient for initials
@@ -249,6 +280,7 @@ This searches LinkedIn for people matching the student's name at their company.
 - Object Fit: contain (preserves aspect ratio)
 
 ### LinkedIn Button
+
 - Variant: outline
 - Full width in student card
 - LinkedIn icon from lucide-react
@@ -258,6 +290,7 @@ This searches LinkedIn for people matching the student's name at their company.
 ## 🚨 Error Handling
 
 ### Logo Service
+
 ```typescript
 try {
   const result = getCompanyLogo(company, size);
@@ -278,6 +311,7 @@ try {
 ```
 
 ### LinkedIn Service
+
 ```typescript
 try {
   const url = generateLinkedInSearchUrl(student);
@@ -291,6 +325,7 @@ try {
 ## 📊 Production Deployment
 
 ### Pre-Deployment Checklist
+
 - [x] All TypeScript errors resolved
 - [x] No console errors in browser
 - [x] Components render correctly
@@ -303,11 +338,13 @@ try {
 - [x] Documentation complete
 
 ### Build Command
+
 ```bash
 pnpm run build
 ```
 
 ### Expected Output
+
 - ✅ No build errors
 - ✅ No type errors
 - ✅ All pages compile successfully
@@ -325,6 +362,7 @@ pnpm run build
 ## 🔮 Future Enhancements
 
 ### Potential Improvements
+
 - [ ] Cache logo results in localStorage
 - [ ] Add logo size variants (sm, md, lg, xl)
 - [ ] Company logo upload for admins
@@ -335,6 +373,7 @@ pnpm run build
 - [ ] Logo quality scoring/selection
 
 ### Not Recommended
+
 - ❌ LinkedIn profile scraping (legal issues)
 - ❌ Storing LinkedIn data (privacy concerns)
 - ❌ Direct LinkedIn API (requires auth)

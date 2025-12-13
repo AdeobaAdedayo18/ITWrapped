@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { Company } from "@/lib/types/internship";
-import { getCompanyLogo, preloadLogo, extractCompanyDomain } from "@/lib/services/logoService";
+import {
+  getCompanyLogo,
+  preloadLogo,
+  extractCompanyDomain,
+} from "@/lib/services/logoService";
 import { Building2 } from "lucide-react";
 import Image from "next/image";
 
@@ -12,7 +16,11 @@ interface CompanyLogoProps {
   className?: string;
 }
 
-export function CompanyLogo({ company, size = 48, className = "" }: CompanyLogoProps) {
+export function CompanyLogo({
+  company,
+  size = 48,
+  className = "",
+}: CompanyLogoProps) {
   const [logoState, setLogoState] = useState<{
     loading: boolean;
     error: boolean;
@@ -82,7 +90,8 @@ export function CompanyLogo({ company, size = 48, className = "" }: CompanyLogoP
   }, [company, size]);
 
   const containerSize = size;
-  const fontSize = size === 48 ? "text-lg" : size === 80 ? "text-2xl" : "text-4xl";
+  const fontSize =
+    size === 48 ? "text-lg" : size === 80 ? "text-2xl" : "text-4xl";
 
   // Loading state
   if (logoState.loading) {

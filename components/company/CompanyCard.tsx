@@ -39,7 +39,11 @@ export function CompanyCard({ company, onClick, delay = 0 }: CompanyCardProps) {
       >
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
-          <CompanyLogo company={company} size={48} className="group-hover:scale-110 transition-transform" />
+          <CompanyLogo
+            company={company}
+            size={48}
+            className="group-hover:scale-110 transition-transform"
+          />
           <Badge className={getBadgeColor()}>
             {company.badge === "popular" && "🔥 "}
             {company.badge === "validated" && "✓ "}

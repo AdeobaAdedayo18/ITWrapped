@@ -8,7 +8,16 @@ import { QuickSearch } from "@/components/dashboard/QuickSearch";
 import { CompanyGrid } from "@/components/company/CompanyCard";
 import { CompanyProfile } from "@/components/company/CompanyProfile";
 import { Button } from "@/components/ui/button";
-import { Building2, Landmark, Cpu, Radio, Zap, MapPin, GraduationCap, Package } from "lucide-react";
+import {
+  Building2,
+  Landmark,
+  Cpu,
+  Radio,
+  Zap,
+  MapPin,
+  GraduationCap,
+  Package,
+} from "lucide-react";
 
 // Industry categories for filtering
 const INDUSTRY_FILTERS = [
@@ -76,7 +85,8 @@ export default function Index() {
   }, [searchQuery, selectedIndustry, companies]);
 
   // Check if user is actively searching or filtering
-  const isSearching = searchQuery.trim().length > 0 || selectedIndustry !== "all";
+  const isSearching =
+    searchQuery.trim().length > 0 || selectedIndustry !== "all";
 
   // Handle company click
   const handleCompanyClick = (companyId: string) => {
