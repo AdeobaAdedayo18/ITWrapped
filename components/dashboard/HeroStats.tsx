@@ -21,7 +21,7 @@ export function HeroStats({ stats }: HeroStatsProps) {
             <span>Students</span>
           </span>
           <br />
-          Interned in 2024
+          Interned in 2025
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           {stats.totalCompanies}+ companies • {stats.topIndustry} dominates •
