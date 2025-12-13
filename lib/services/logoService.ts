@@ -1,12 +1,19 @@
 /**
  * Logo Service
  * Handles company logo fetching with multiple fallbacks
- * 1. Clearbit Logo API
- * 2. Brandfetch API
- * 3. Initials fallback
+ * 1. Cache check (persistent storage)
+ * 2. Clearbit Logo API
+ * 3. Brandfetch API
+ * 4. Advanced scraping
+ * 5. Initials fallback
  */
 
 import { Company } from "../types/internship";
+
+/**
+ * Note: Cache management is now handled by LogoCacheProvider
+ * using in-memory Map for instant O(1) lookups
+ */
 
 /**
  * Get company domain from name or address
@@ -166,4 +173,33 @@ export function preloadLogo(url: string): Promise<boolean> {
  */
 export function getFallbackLogo(domain: string): string {
   return getBrandfetchLogoUrl(domain);
+}
+
+/**
+ * Advanced logo fetching using server-side scraping
+ * This is called when Clearbit and Brandfetch both fail
+ * Also caches the result for future use
+ */
+export async function getAdvancedLogo(company: Company): Promise<string | null> {
+  try {
+    const domain = extractCompanyDomain(company);
+    const params = new URLSearchParams();
+
+    if (domain) {
+      params.set("domain", domain);
+    }
+    params.set("company", company.name);
+
+    const response = await fetch(`/api/logo?${params.toString()}`);
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+    return data.logoUrl;
+  } catch (error) {
+    console.error("Advanced logo fetch failed:", error);
+    return null;
+  }
 }

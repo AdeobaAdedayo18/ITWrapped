@@ -41,7 +41,7 @@ export function CompanyCard({ company, onClick, delay = 0 }: CompanyCardProps) {
         <div className="flex items-start justify-between mb-4">
           <CompanyLogo
             company={company}
-            size={48}
+            size={80}
             className="group-hover:scale-110 transition-transform"
           />
           <Badge className={getBadgeColor()}>
@@ -85,9 +85,14 @@ export function CompanyCard({ company, onClick, delay = 0 }: CompanyCardProps) {
 interface CompanyGridProps {
   companies: Company[];
   onCompanyClick: (companyId: string) => void;
+  disableAnimation?: boolean;
 }
 
-export function CompanyGrid({ companies, onCompanyClick }: CompanyGridProps) {
+export function CompanyGrid({
+  companies,
+  onCompanyClick,
+  disableAnimation = false,
+}: CompanyGridProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {companies.map((company, index) => (
@@ -95,7 +100,7 @@ export function CompanyGrid({ companies, onCompanyClick }: CompanyGridProps) {
           key={company.id}
           company={company}
           onClick={() => onCompanyClick(company.id)}
-          delay={index * 0.05}
+          delay={disableAnimation ? 0 : index * 0.02} // Faster animation for better perf
         />
       ))}
     </div>

@@ -1,0 +1,17 @@
+{
+  "cache": {
+    "united bank for africa (uba)": {
+      "url": "https://ubagroup.com/favicon.ico",
+      "source": "advanced-scrape",
+      "initials": "UB",
+      "timestamp": 1765653286517
+    },
+    "total energies": {
+      "url": "https://totalenergies.com/sites/g/files/nytnzq121/files/images/2021-05/cover-carrousel-logo-2x.png",
+      "source": "advanced-scrape",
+      "initials": "TE",
+      "timestamp": 1765653289042
+    }
+  },
+  "lastUpdated": "2025-12-13T19:14:49.042Z"
+}

@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useInternshipData } from "@/lib/hooks/useInternshipData";
+import { useInfiniteScroll } from "@/lib/hooks/useInfiniteScroll";
+import { useScrollMemory } from "@/lib/hooks/useScrollMemory";
 import { HeroStats } from "@/components/dashboard/HeroStats";
 import { PopularityChart } from "@/components/dashboard/PopularityChart";
 import { QuickSearch } from "@/components/dashboard/QuickSearch";
 import { CompanyGrid } from "@/components/company/CompanyCard";
 import { CompanyProfile } from "@/components/company/CompanyProfile";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { Button } from "@/components/ui/button";
 import {
   Building2,
@@ -18,6 +21,10 @@ import {
   GraduationCap,
   Package,
 } from "lucide-react";
+
+// Pagination constants
+const INITIAL_DISPLAY = 20;
+const LOAD_MORE_COUNT = 5;
 
 // Industry categories for filtering
 const INDUSTRY_FILTERS = [
@@ -48,6 +55,11 @@ export default function Index() {
   );
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIndustry, setSelectedIndustry] = useState("all");
+  const [displayCount, setDisplayCount] = useState(INITIAL_DISPLAY);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  // Scroll memory hooks
+  const { loadScrollState, clearScrollState } = useScrollMemory(displayCount);
 
   // Get selected company data
   const selectedCompany = useMemo(() => {
@@ -88,6 +100,57 @@ export default function Index() {
   const isSearching =
     searchQuery.trim().length > 0 || selectedIndustry !== "all";
 
+  // Paginated companies for display
+  const displayedCompanies = useMemo(() => {
+    // If fewer than 20 total, show all without pagination
+    if (filteredCompanies.length <= INITIAL_DISPLAY) {
+      return filteredCompanies;
+    }
+    return filteredCompanies.slice(0, displayCount);
+  }, [filteredCompanies, displayCount]);
+
+  const hasMore = displayedCompanies.length < filteredCompanies.length;
+
+  // Load more handler
+  const handleLoadMore = () => {
+    if (isLoadingMore || !hasMore) return;
+
+    setIsLoadingMore(true);
+    // Simulate network delay for smooth UX
+    setTimeout(() => {
+      setDisplayCount((prev) => prev + LOAD_MORE_COUNT);
+      setIsLoadingMore(false);
+    }, 100);
+  };
+
+  // Infinite scroll hook
+  const { sentinelRef } = useInfiniteScroll({
+    hasMore,
+    isLoading: isLoadingMore,
+    threshold: 200,
+    onLoadMore: handleLoadMore,
+  });
+
+  // Restore scroll position on mount
+  useEffect(() => {
+    if (companies.length > 0 && !selectedCompanyId) {
+      const savedState = loadScrollState();
+      if (savedState && savedState.displayedCount > INITIAL_DISPLAY) {
+        setDisplayCount(savedState.displayedCount);
+        // Restore scroll position after content loads
+        requestAnimationFrame(() => {
+          window.scrollTo(0, savedState.scrollPosition);
+        });
+      }
+    }
+  }, [companies.length, selectedCompanyId, loadScrollState]);
+
+  // Reset display count when search/filter changes
+  useEffect(() => {
+    setDisplayCount(INITIAL_DISPLAY);
+    clearScrollState();
+  }, [searchQuery, selectedIndustry, clearScrollState]);
+
   // Handle company click
   const handleCompanyClick = (companyId: string) => {
     setSelectedCompanyId(companyId);
@@ -96,6 +159,7 @@ export default function Index() {
   // Handle back from company profile
   const handleBack = () => {
     setSelectedCompanyId(null);
+    // Scroll position will be restored by useEffect
   };
 
   // Loading state
@@ -179,7 +243,10 @@ export default function Index() {
           <div className="mb-6">
             <h2 className="text-3xl font-black tracking-tight mb-2">
               🔍 {searchQuery ? "Search Results" : "Filtered Companies"}{" "}
-              <span className="text-primary">({filteredCompanies.length})</span>
+              <span className="text-primary">
+                ({displayedCompanies.length}
+                {hasMore && `/${filteredCompanies.length}`})
+              </span>
             </h2>
             <p className="text-muted-foreground">
               {searchQuery
@@ -188,11 +255,26 @@ export default function Index() {
             </p>
           </div>
 
-          {filteredCompanies.length > 0 ? (
-            <CompanyGrid
-              companies={filteredCompanies}
-              onCompanyClick={handleCompanyClick}
-            />
+          {displayedCompanies.length > 0 ? (
+            <>
+              <CompanyGrid
+                companies={displayedCompanies}
+                onCompanyClick={handleCompanyClick}
+                disableAnimation={displayCount > INITIAL_DISPLAY}
+              />
+
+              {/* Infinite scroll sentinel */}
+              {hasMore && (
+                <div
+                  ref={sentinelRef}
+                  className="h-20 flex items-center justify-center mt-8"
+                >
+                  <p className="text-sm text-muted-foreground">
+                    Scroll for more...
+                  </p>
+                </div>
+              )}
+            </>
           ) : (
             <div className="text-center py-12">
               <p className="text-lg text-muted-foreground">
@@ -227,7 +309,11 @@ export default function Index() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="mb-6">
             <h2 className="text-3xl font-black tracking-tight mb-2">
-              🏢 All Companies
+              🏢 All Companies{" "}
+              <span className="text-primary">
+                ({displayedCompanies.length}
+                {hasMore && `/${companies.length}`})
+              </span>
             </h2>
             <p className="text-muted-foreground">
               Browse all internship opportunities
@@ -235,11 +321,36 @@ export default function Index() {
           </div>
 
           <CompanyGrid
-            companies={companies}
+            companies={displayedCompanies}
             onCompanyClick={handleCompanyClick}
+            disableAnimation={displayCount > INITIAL_DISPLAY}
           />
+
+          {/* Infinite scroll sentinel */}
+          {hasMore && (
+            <div
+              ref={sentinelRef}
+              className="h-20 flex items-center justify-center mt-8"
+            >
+              {isLoadingMore ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  <p className="text-sm text-muted-foreground">
+                    Loading more...
+                  </p>
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground animate-pulse">
+                  Scroll for more...
+                </p>
+              )}
+            </div>
+          )}
         </div>
       )}
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </main>
   );
 }
