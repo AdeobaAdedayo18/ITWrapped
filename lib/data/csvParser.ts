@@ -210,7 +210,7 @@ function processCSVData(data: Record<string, string>[]): Student[] {
     const level = row.LEVEL || row.level || "300";
     const department = row.DEPARTMENT || row.department || "";
     const companyName = row["COMPANY'S NAME"] || row.companyName || row["COMPANY'S NAME"] || "";
-    const companyAddress = row["COMPANIES ADDRESS"] || row[" "] || row[""] || "";
+    const companyAddress = row["COMPANY ADDRESS"] || row.companyAddress || row["COMPANY ADDRESS"] || "";
     const phone = row["STUDENTS' GSM NO"] || row.phone || row["STUDENTS' GSM NO"] || "";
     const parentPhone = row["PARENT GSM NO."] || row.parentPhone || row["PARENT GSM NO."] || "";
     const email = row["STUDENT EMAIL"] || row.email || row["STUDENT EMAIL"] || "";
