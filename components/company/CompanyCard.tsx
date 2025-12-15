@@ -26,15 +26,15 @@ export function CompanyCard({ company, onClick }: CompanyCardProps) {
   return (
     <div className="transition-transform hover:scale-[1.02] active:scale-[0.98]">
       <Card
-        className="p-6 border-2 hover:border-primary cursor-pointer transition-all hover:shadow-lg group h-full"
+        className="p-3 sm:p-6 border-2 hover:border-primary cursor-pointer transition-all hover:shadow-lg group h-full"
         onClick={onClick}
       >
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-3 sm:mb-4">
           <CompanyLogo
             company={company}
             size={80}
-            className="group-hover:scale-110 transition-transform"
+            className="group-hover:scale-110 transition-transform sm:w-20 sm:h-20"
           />
           <Badge className={`${getBadgeColor()} hidden md:flex`}>
             {company.badge === "popular" && "🔥 "}
@@ -44,28 +44,28 @@ export function CompanyCard({ company, onClick }: CompanyCardProps) {
         </div>
 
         {/* Company Name */}
-        <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="font-bold text-base sm:text-xl mb-2 group-hover:text-primary transition-colors line-clamp-2">
           {company.name}
         </h3>
 
         {/* Metadata */}
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Users className="w-4 h-4" />
+        <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-4">
+          <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
+            <Users className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="font-medium">
               {company.internCount}{" "}
               {company.internCount === 1 ? "intern" : "interns"}
             </span>
           </div>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <MapPin className="w-4 h-4" />
+          <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
+            <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="truncate">{company.city}</span>
           </div>
         </div>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1">
-          <span className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">
+          <span className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-muted-foreground">
             {company.industry}
           </span>
         </div>
@@ -86,7 +86,7 @@ export function CompanyGrid({
   disableAnimation = false,
 }: CompanyGridProps) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
       {companies.map((company) => (
         <CompanyCard
           key={company.id}
