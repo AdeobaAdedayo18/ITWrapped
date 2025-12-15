@@ -18,8 +18,26 @@ interface ModalContextType {
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-export const ModalProvider = ({ children }: { children: ReactNode }) => {
-  const [open, setOpen] = useState(false);
+export const ModalProvider = ({
+  children,
+  controlledOpen,
+  onControlledOpenChange,
+}: {
+  children: ReactNode;
+  controlledOpen?: boolean;
+  onControlledOpenChange?: (open: boolean) => void;
+}) => {
+  const [internalOpen, setInternalOpen] = useState(false);
+
+  // Use controlled state if provided, otherwise use internal state
+  const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
+  const setOpen = (newOpen: boolean) => {
+    if (onControlledOpenChange) {
+      onControlledOpenChange(newOpen);
+    } else {
+      setInternalOpen(newOpen);
+    }
+  };
 
   return (
     <ModalContext.Provider value={{ open, setOpen }}>
@@ -36,8 +54,20 @@ export const useModal = () => {
   return context;
 };
 
-export function Modal({ children }: { children: ReactNode }) {
-  return <ModalProvider>{children}</ModalProvider>;
+export function Modal({
+  children,
+  open,
+  onOpenChange,
+}: {
+  children: ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}) {
+  return (
+    <ModalProvider controlledOpen={open} onControlledOpenChange={onOpenChange}>
+      {children}
+    </ModalProvider>
+  );
 }
 
 export const ModalTrigger = ({

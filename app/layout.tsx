@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/NavBar";
+import { AppLayoutClient } from "@/components/layout/AppLayoutClient";
 import { LogoCacheProvider } from "@/components/LogoCacheProvider";
 
 const geistSans = Geist({
@@ -30,10 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LogoCacheProvider>
-          <div className="min-h-screen bg-background text-foreground">
-            <Navbar />
-            {children}
-          </div>
+          <AppLayoutClient>{children}</AppLayoutClient>
         </LogoCacheProvider>
       </body>
     </html>

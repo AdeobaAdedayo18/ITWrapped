@@ -1,8 +1,9 @@
 "use client";
 
-import { FeedbackModal } from "../FeedbackModal";
+import { FeedbackModal, FeedbackModalRef } from "../FeedbackModal";
+import { forwardRef } from "react";
 
-export function Navbar() {
+export const Navbar = forwardRef<FeedbackModalRef>((props, ref) => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-black bg-white">
       <div className="w-full flex h-16 items-center justify-between pl-6">
@@ -25,10 +26,12 @@ export function Navbar() {
 
         <div className="flex items-center gap-8">
           <div className="pl-8 flex items-center justify-end">
-            <FeedbackModal />
+            <FeedbackModal ref={ref} />
           </div>
         </div>
       </div>
     </header>
   );
-}
+});
+
+Navbar.displayName = "Navbar";

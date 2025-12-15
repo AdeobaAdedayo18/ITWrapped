@@ -1,6 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import {
   Modal,
   ModalBody,
@@ -11,10 +16,30 @@ import {
 } from "./ui/animated-modal";
 import { motion } from "framer-motion";
 
-export function FeedbackModal() {
+export interface FeedbackModalRef {
+  openModal: () => void;
+}
+
+export const FeedbackModal = forwardRef<FeedbackModalRef>((props, ref) => {
   const [feedback, setFeedback] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+
+  // Expose openModal method to parent via ref
+  useImperativeHandle(ref, () => ({
+    openModal: () => {
+      setInternalOpen(true);
+    },
+  }));
+
+  // Reset form when modal closes
+  useEffect(() => {
+    if (!internalOpen && !submitted) {
+      // Clear feedback text when modal is closed (but not when showing success)
+      setFeedback("");
+    }
+  }, [internalOpen, submitted]);
 
   const handleSubmit = async () => {
     if (!feedback.trim()) return;
@@ -44,7 +69,7 @@ export function FeedbackModal() {
   };
 
   return (
-    <Modal>
+    <Modal open={internalOpen} onOpenChange={setInternalOpen}>
       <ModalTrigger className="h-16 bg-black px-4 text-lg font-medium text-white hover:bg-primary hover:text-black transition-colors relative overflow-hidden rounded-none">
         <span className="relative z-10">What would make IT Wrapped better</span>
       </ModalTrigger>
@@ -147,7 +172,9 @@ export function FeedbackModal() {
       </ModalBody>
     </Modal>
   );
-}
+});
+
+FeedbackModal.displayName = "FeedbackModal";
 
 function ModalCloseButton() {
   const { setOpen } = useModal();
