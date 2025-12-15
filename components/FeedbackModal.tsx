@@ -45,22 +45,24 @@ export function FeedbackModal() {
 
   return (
     <Modal>
-      <ModalTrigger className="h-16 bg-black px-4 text-lg font-medium text-white transition-colors relative overflow-hidden rounded-none group">
-        <span className="relative z-10 inline-block transition-transform group-hover:-translate-y-[200%] duration-300">
-          What would make{" "}
-          <span className="font-museo lowercase">
-            <span className="text-white">it</span>
-            <span className="text-primary">wrapped</span>
+      <ModalTrigger className="h-16 bg-black px-2 sm:px-4 text-sm sm:text-lg font-medium text-white relative overflow-hidden rounded-none group">
+        <span className="relative z-10 inline-block transition-all duration-300 group-hover:scale-105">
+          <span className="hidden sm:inline">What would make </span>
+          <span className="sm:hidden">Make </span>
+          <span className="font-museo lowercase transition-all duration-300 group-hover:tracking-wider">
+            <span className="text-white transition-colors duration-300">
+              it
+            </span>
+            <span className="text-primary transition-all duration-300 group-hover:text-white">
+              wrapped
+            </span>
           </span>{" "}
-          better
-        </span>
-        <span className="absolute inset-0 flex items-center justify-center translate-y-[200%] group-hover:translate-y-0 transition-transform duration-300 px-4">
-          What would make{" "}
-          <span className="font-museo lowercase">
-            <span className="text-white">  it</span>
-            <span className="text-primary">wrapped</span>
-          </span>{" "}
-          better
+          <span className="transition-colors duration-300 group-hover:text-primary">
+            better
+          </span>
+          <span className="hidden sm:inline transition-colors duration-300 group-hover:text-primary">
+            ?
+          </span>
         </span>
       </ModalTrigger>
       <ModalBody>

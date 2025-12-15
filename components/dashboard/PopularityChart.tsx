@@ -23,7 +23,7 @@ export function PopularityChart({
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-6">
-        <h2 className="text-3xl font-black tracking-tight mb-2">
+        <h2 className="text-3xl font-black tracking-tight mb-2 font-museo">
           🔥 Most Popular Companies
         </h2>
         <p className="text-muted-foreground">
