@@ -49,12 +49,12 @@ export function FeedbackModal() {
         <span className="relative z-10 inline-block transition-all duration-300 group-hover:scale-105">
           <span className="hidden sm:inline">What would make </span>
           <span className="sm:hidden">Make </span>
-          <span className="font-museo lowercase transition-all duration-300 group-hover:tracking-wider">
+          <span className="transition-all duration-300 group-hover:tracking-wider">
             <span className="text-white transition-colors duration-300">
-              it
+              IT
             </span>
             <span className="text-primary transition-all duration-300 group-hover:text-white">
-              wrapped
+              {" "}Wrapped
             </span>
           </span>{" "}
           <span className="transition-colors duration-300 group-hover:text-primary">
@@ -76,9 +76,8 @@ export function FeedbackModal() {
                 className="md:hidden text-xl text-neutral-900 dark:text-neutral-100 font-bold text-center mb-8"
               >
                 Make{" "}
-                <span className="px-1 py-0.5 rounded-md bg-primary/20 border border-primary/30 font-museo lowercase">
-                  <span className="text-black">it</span>
-                  <span className="text-primary">wrapped</span>
+                <span className="px-1 py-0.5 rounded-md bg-primary/20 border border-primary/30">
+                  IT Wrapped
                 </span>{" "}
                 better 💡
               </motion.h4>
@@ -89,9 +88,8 @@ export function FeedbackModal() {
                 className="hidden md:block text-2xl text-neutral-900 dark:text-neutral-100 font-bold text-center mb-8"
               >
                 What would make{" "}
-                <span className="px-1 py-0.5 rounded-md bg-primary/20 border border-primary/30 font-museo lowercase">
-                  <span className="text-black">it</span>
-                  <span className="text-primary">wrapped</span>
+                <span className="px-1 py-0.5 rounded-md bg-primary/20 border border-primary/30">
+                  IT Wrapped
                 </span>{" "}
                 better? 💡
               </motion.h4>
@@ -115,12 +113,7 @@ export function FeedbackModal() {
                 transition={{ delay: 0.2 }}
                 className="mt-6 text-center text-sm text-neutral-600 dark:text-neutral-400"
               >
-                Your feedback helps make{" "}
-                <span className="font-museo lowercase">
-                  <span className="text-black dark:text-white">it</span>
-                  <span className="text-primary">wrapped</span>
-                </span>{" "}
-                better for everyone! 🚀
+                Your feedback helps make IT Wrapped better for everyone! 🚀
               </motion.div>
             </>
           ) : (

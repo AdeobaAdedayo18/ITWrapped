@@ -14,7 +14,7 @@ export function HeroStats({ stats }: HeroStatsProps) {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-4 font-museo">
+        <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-4">
           Discover Where{" "}
           <span className="inline-flex items-center gap-2 text-primary">
             <AnimatedNumber value={stats.totalStudents} />
@@ -104,7 +104,7 @@ function StatCard({
         </div>
       </div>
       <div className="space-y-1">
-        <p className="text-3xl font-black tracking-tight font-museo">
+        <p className="text-3xl font-black tracking-tight">
           {value !== undefined ? (
             <>
               <AnimatedNumber value={value} />
