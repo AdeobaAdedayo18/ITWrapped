@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, MuseoModerno } from "next/font/google";
 import "./globals.css";
 import { AppLayoutClient } from "@/components/layout/AppLayoutClient";
 import { LogoCacheProvider } from "@/components/LogoCacheProvider";
@@ -14,6 +14,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const museoModerno = MuseoModerno({
+  variable: "--font-museo-moderno",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
 export const metadata: Metadata = {
   title: "ITWrapped",
   description: "Your Internship Wrapped",
@@ -26,8 +32,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="7cec2d00-3a82-42f7-9c00-a521f34367f9"
+        ></script>
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${museoModerno.variable} antialiased`}
       >
         <LogoCacheProvider>
           <AppLayoutClient>{children}</AppLayoutClient>

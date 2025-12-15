@@ -9,12 +9,12 @@ export const Navbar = forwardRef<FeedbackModalRef>((props, ref) => {
       <div className="w-full flex h-16 items-center justify-between pl-6">
         <div className="flex items-center gap-3">
           <a
-            className="font-bold tracking-tight text-2xl md:text-4xl"
+            className="font-museo font-bold tracking-tight text-2xl md:text-4xl lowercase"
             href="#"
-            aria-label="Gumroad home"
-            style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
+            aria-label="ITwrapped home"
           >
-            ITwrapped
+            <span className="text-black">it</span>
+            <span className="text-primary">wrapped.</span>
           </a>
           <span className="inline-flex items-center gap-1 rounded-full border border-neutral-300 px-2.5 py-0.5 text-xs">
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">

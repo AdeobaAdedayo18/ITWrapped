@@ -4,7 +4,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
- 
+
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -72,8 +72,36 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        'sans': ['ABC Favorit', 'Avenir', 'Montserrat', 'Corbel', 'URW Gothic', 'Source Sans Pro', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        'mono': ['ABC Favorit Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', 'monospace'],
+        sans: [
+          "ABC Favorit",
+          "Avenir",
+          "Montserrat",
+          "Corbel",
+          "URW Gothic",
+          "Source Sans Pro",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
+        mono: [
+          "ABC Favorit Mono",
+          "SF Mono",
+          "Monaco",
+          "Inconsolata",
+          "Roboto Mono",
+          "Oxygen Mono",
+          "Ubuntu Monospace",
+          "Source Code Pro",
+          "Fira Mono",
+          "Droid Sans Mono",
+          "Courier New",
+          "monospace",
+        ],
+        museo: ["var(--font-museo-moderno)", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -100,5 +128,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
-
+};
